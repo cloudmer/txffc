@@ -70,7 +70,6 @@ func containAnalysisCodes(packet *model.Txdata)  {
 	var h3_lucky_number int
 
 	for i := range codes {
-		fmt.Println(codes[i])
 		//获取当前彩种 分析数据中的 数据包 N 的分析数据
 		anaData := analysisTxffc.GetAnalysis(strconv.Itoa(codes[i].Id))
 

@@ -15,7 +15,7 @@ func main()  {
 	for  {
 		select {
 		// 腾讯分分彩 1分钟一开奖 10秒一计算
-		case <-time.After(2 * time.Second):
+		case <-time.After(10 * time.Second):
 			txffc.Calculation()
 		}
 	}
