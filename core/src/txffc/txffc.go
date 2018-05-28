@@ -18,6 +18,7 @@ var contain_datapackage []*model.Txdata
 var new_code string = ""
 
 // 计算
+// 包
 func Calculation()  {
 	// 查询
 	txffc := new(model.Txffc)
