@@ -47,7 +47,6 @@ func Calculation()  {
 	contain_datapackage = sscdata.Query()
 
 	for i := range contain_datapackage {
-		contain_datapackage[i].Continuity = contain_datapackage[i].Continuity -1
 		go containAnalysisCodes(contain_datapackage[i])
 	}
 
@@ -227,12 +226,9 @@ func (md *multipleData) calculate() {
 		}
 	}
 
-	//fmt.Println(log_html)
-	go mail.SendMail("腾讯分分彩 测试邮件 报警", log_html)
-
 	// 检查是否报警
-	if continuity_number == md.packet.Continuity && cycle_number >= md.packet.Cycle {
-		body_html := "<div>腾讯分分彩 a连续b周期 报警 位置: "+ md.position+ " 数据包别名: "+ md.packet.Alias+ " 报警周期数 "+ strconv.Itoa(cycle_number) +"</div>"
+	if md.packet.Cycle - 1 == cycle_number && continuity_number == md.packet.Continuity -1 {
+		body_html := "<div>腾讯分分彩 a连续b周期 报警 位置: "+ md.position+ " 数据包别名: "+ md.packet.Alias+ " 几A几B: " + strconv.Itoa(md.packet.Continuity) + " A " + strconv.Itoa(md.packet.Bnumber) + " B " + " 当前累计周期数 "+ strconv.Itoa(cycle_number) + " 当前a连续: "+ strconv.Itoa(continuity_number) +"</div>"
 		body_html += log_html
 		go mail.SendMail("腾讯分分彩 a连续b周期 报警", body_html)
 	}
