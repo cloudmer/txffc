@@ -111,6 +111,30 @@ func containAnalysisCodes(packet *model.SscCycle)  {
 }
 
 func (md *multipleData) calculate() {
+	md.code = make([]string, 0)
+	md.code = append(md.code, "696")
+	md.code = append(md.code, "301")
+	md.code = append(md.code, "045")
+	md.code = append(md.code, "230")
+	md.code = append(md.code, "611")
+	md.code = append(md.code, "804")
+	md.code = append(md.code, "774")
+	md.code = append(md.code, "904")
+	md.code = append(md.code, "800")
+	md.code = append(md.code, "909")
+	md.code = append(md.code, "622")
+	md.code = append(md.code, "745")
+	md.code = append(md.code, "442")
+	md.code = append(md.code, "461")
+	md.code = append(md.code, "775")
+	md.code = append(md.code, "935")
+	md.code = append(md.code, "863")
+	md.code = append(md.code, "714")
+	md.code = append(md.code, "576")
+	md.code = append(md.code, "224")
+	md.code = append(md.code, "787")
+	md.code = append(md.code, "834")
+	md.code = append(md.code, "872")
 
 	// 周期数
 	var cycle_number int = 0
@@ -165,10 +189,10 @@ func (md *multipleData) calculate() {
 		// a包连续到达 阀值
 		if continuity_number >= md.packet.Continuity {
 			b_number += 1
-			log_html += "<div> 等待b包在规定期数内出现 " + strconv.Itoa(b_number) + "</div>"
+			log_html += "<div> 等待b包在规定期数内出现 b开始累计 = " + strconv.Itoa(b_number) + "</div>"
 
 			// a包连续完 在b包规定期数内出现了b
-			if b_number <= md.packet.Bnumber && in_a == true {
+			if b_number <= md.packet.Bnumber && in_a == false {
 				// 周期清零
 				cycle_number = 0
 				// 连续清零
@@ -178,6 +202,9 @@ func (md *multipleData) calculate() {
 				// 重新计算连续a
 				a_status = true
 				log_html += "<div> a包连续完 在b包规定期数内出现了b </div>"
+				log_html += "<div> 周期值: "+ strconv.Itoa(cycle_number) +" </div>"
+				log_html += "<div> a连续值: "+ strconv.Itoa(continuity_number) +" </div>"
+				log_html += "<div> b值: "+ strconv.Itoa(b_number) +" </div>"
 			}
 
 			// a包连续完 未在b包规定期数内出现了b
