@@ -69,7 +69,7 @@ func containAnalysisCodes(packet *model.SscCycle)  {
 
 	// 查询 200期内开奖号
 	txffcModel := new(model.Txffc)
-	codes := txffcModel.Query("200")
+	codes := txffcModel.Query("400")
 
 	q3codes := make([]string, 0)
 	z3codes := make([]string, 0)
