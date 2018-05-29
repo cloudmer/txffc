@@ -47,6 +47,7 @@ func Calculation()  {
 	contain_datapackage = sscdata.Query()
 
 	for i := range contain_datapackage {
+		contain_datapackage[i].Continuity = contain_datapackage[i].Continuity -1
 		go containAnalysisCodes(contain_datapackage[i])
 	}
 
@@ -111,16 +112,13 @@ func containAnalysisCodes(packet *model.SscCycle)  {
 }
 
 func (md *multipleData) calculate() {
-	md.packet.Continuity = md.packet.Continuity - 1
-
 	//md.code = make([]string, 0)
-	//md.code = append(md.code, "093")
-	//md.code = append(md.code, "859")
-	//md.code = append(md.code, "470")
-	//md.code = append(md.code, "078")
-	//md.code = append(md.code, "439")
-	//md.code = append(md.code, "633")
-	//md.code = append(md.code, "899")
+	//md.code = append(md.code, "661")
+	//md.code = append(md.code, "577")
+	//md.code = append(md.code, "065")
+	//md.code = append(md.code, "345")
+	//md.code = append(md.code, "411")
+	//md.code = append(md.code, "020")
 
 	// 周期数
 	var cycle_number int = 0
@@ -229,6 +227,7 @@ func (md *multipleData) calculate() {
 		}
 	}
 
+	//fmt.Println(log_html)
 	go mail.SendMail("腾讯分分彩 测试邮件 报警", log_html)
 
 	// 检查是否报警
