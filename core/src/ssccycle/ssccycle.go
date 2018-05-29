@@ -227,7 +227,7 @@ func (md *multipleData) calculate() {
 	}
 
 	// 检查是否报警
-	if md.packet.Cycle - 1 == cycle_number && continuity_number == md.packet.Continuity -1 {
+	if cycle_number >= md.packet.Cycle - 1 && continuity_number == md.packet.Continuity -1 {
 		body_html := "<div>腾讯分分彩 a连续b周期 报警 位置: "+ md.position+ " 数据包别名: "+ md.packet.Alias+ " 几A几B: " + strconv.Itoa(md.packet.Continuity) + " A " + strconv.Itoa(md.packet.Bnumber) + " B " + " 当前累计周期数 "+ strconv.Itoa(cycle_number) + " 当前a连续: "+ strconv.Itoa(continuity_number) +"</div>"
 		body_html += log_html
 		go mail.SendMail("腾讯分分彩 a连续b周期 报警", body_html)
