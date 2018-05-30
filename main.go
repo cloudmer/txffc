@@ -18,9 +18,9 @@ func main()  {
 		// 腾讯分分彩 1分钟一开奖 10秒一计算
 		case <-time.After(10 * time.Second):
 			// 腾讯分分彩
-			txffc.Calculation()
+			go txffc.Calculation()
 			// 腾讯分分彩 a包连续 周期 计算
-			ssccycle.Calculation()
+			go ssccycle.Calculation()
 		}
 	}
 }
